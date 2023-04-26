@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { useEffect, useState } from 'react';
 
 const PokeDash = () => {
@@ -6,12 +7,10 @@ const PokeDash = () => {
     const [pokemon, setPokemon] = useState([]);
 
     useEffect(() => {
-        fetch("https://pokeapi.co/api/v2/pokemon")
+        axios.get("https://pokeapi.co/api/v2/pokemon")
             .then(res => {
-            return res.json()
-            })
-            .then(res => {
-            setPokemon(res.results);
+            console.log(res.data.results);
+            setPokemon(res.data.results);
             })
             .catch(err => console.log(err))
             }, []
